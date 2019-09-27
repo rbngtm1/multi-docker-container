@@ -1,0 +1,24 @@
+sudo: required
+language: generic
+services:
+  - docker
+
+before_install: 
+  - docker build -t robingautam/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true robingautam/react-test npm test
+
+after_success:
+  - docker build -t robingautam/multi-client ./client
+  - docker build -t robingautam/multi-nginx ./nginx
+  - docker build -t robingautam/multi-server ./server
+  - docker build -t robingautam/multi-worker ./worker
+  # Log into the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push into docker hub
+  - docker push robingautam/multi-client
+  - docker push robingautam/multi-nginx
+  - docker push robingautam/multi-server
+  - docker push robingautam/multi-worker
+
