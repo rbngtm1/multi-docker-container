@@ -4,10 +4,10 @@ services:
   - docker
 
 before_install: 
-  - docker build -t rbngtm1/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t robingautam/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true rbngtm1/react-test npm test
+  - docker run -e CI=true robingautam/react-test npm test
 
 after_success:
   - docker build -t rbngtm1/multi-client ./client
