@@ -16,7 +16,7 @@ after_success:
   - docker build -t rbngtm1/multi-worker ./worker
   # Log into the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  # Take those images and push into docker hub
+  # Take those images and push into docker hub.
   - docker push rbngtm1/multi-client
   - docker push rbngtm1/multi-nginx
   - docker push rbngtm1/multi-server
