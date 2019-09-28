@@ -6,28 +6,28 @@
             "image": "rbngtm1/multi-client",
             "hostname": "client",
             "essential": false,
-            "memory": 128
+            "memory": 256
         },
         {
             "name": "server",
             "image": "rbngtm1/multi-server",
             "hostname": "api",
             "essential": false,
-            "memory": 128
+            "memory": 256
         },
         {
             "name": "worker",
             "image": "rbngtm1/multi-worker",
             "hostname": "worker",
             "essential": false,
-            "memory": 128
+            "memory": 256
         },
         {
             "name": "nginx",
             "image": "rbngtm1/multi-nginx",
             "hostname": "nginx",
             "essential": true,
-            "memory": 128,
+            "memory": 256,
             "portMappings": [
                 {
                     "hostPort": 80,
